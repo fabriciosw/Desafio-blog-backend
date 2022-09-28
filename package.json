@@ -1,8 +1,8 @@
 {
-  "name": "quickstart-node-typescript-api",
+  "name": "desafio-blog",
   "version": "1.0.0",
-  "description": "Quickstart NodeJs API com Typescript",
-  "projectPrefix": "quickstart",
+  "description": "Blog com NodeJs API com Typescript",
+  "projectPrefix": "blog",
   "main": "index.js",
   "engines": {
     "npm": ">=6.0.0",
@@ -86,6 +86,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "flat": "^5.0.2",
     "helmet": "^4.6.0",
     "http-status-codes": "^2.1.4",

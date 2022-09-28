@@ -1,5 +1,6 @@
 import 'reflect-metadata';
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -10,6 +11,7 @@ import database from './config/database';
 import routes from './routes';
 import swaggerDocs from './config/swagger';
 import deserializeUser from './middlewares/deserializeUser';
+import ApiError from './utils/apiError.utils';
 
 const app = express();
 
@@ -30,6 +32,26 @@ app.listen(config.port, async () => {
   await database();
 
   routes(app);
+
+  app.use(
+    (
+      error: unknown,
+      request: Request,
+      response: Response,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      next: NextFunction
+    ) => {
+      if (error instanceof ApiError) {
+        return response.status(error.statusCode).json({
+          message: error.message,
+        });
+      }
+      return response.status(500).json({
+        status: 500,
+        message: 'Internal server error',
+      });
+    }
+  );
 
   if (config.env !== environments.PRODUCTION) {
     swaggerDocs(app, config.publicUrl, config.port);

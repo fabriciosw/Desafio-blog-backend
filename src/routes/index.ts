@@ -1,5 +1,6 @@
 import { Express, Request, Response } from 'express';
-import productRoutes from './v1/product.routes';
+// import productRoutes from './v1/product.routes';
+import userRoutes from './v1/user.routes';
 
 function routes(app: Express) {
   /**
@@ -17,7 +18,8 @@ function routes(app: Express) {
     res.sendStatus(200)
   );
 
-  app.use('/api/v1/products', productRoutes);
+  // app.use('/api/v1/products', productRoutes);
+  app.use('/api/v1/users', userRoutes);
 }
 
 export default routes;

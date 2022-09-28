@@ -20,7 +20,16 @@ Mais informações: [site oficial](https://nodejs.org/en/).
 
 Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis.
 
-Após realizar essas alterações, digite no seu terminal `$ yarn dev:debug` que permite o debug pelo VSCode ou `$ yarn dev` apenas para executar o projeto e aguarde o seu projeto iniciar. :smile:
+Digite no seu terminal `$ yarn typeorm:run` para executar as migrations da API.
+
+Digite no seu terminal `$ yarn seed:run` para popular sua tabela com o primeiro usuário administrador.
+
+Após realizar essas alterações, digite no seu terminal `$ yarn dev` e aguarde o seu projeto iniciar :smile:
+
+O usuário padrão injetado pela seed é:
+Nome: Fabricio el ADM
+Email: fabricio.seb1@gmail.com
+Senha: 12345
 
 ### :star: Configurações principais
 
