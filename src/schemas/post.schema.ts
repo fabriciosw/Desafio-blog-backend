@@ -75,41 +75,42 @@ import { object, string, InferType } from 'yup';
 
 const create = {
   body: object({
-    name: string()
-      .defined('name is required')
-      .max(120, 'name must have maximum 120 characters'),
-    email: string()
-      .defined('email is required')
-      .matches(/\S+@\S+\.\S+/, 'email format is invalid'),
-    password: string().defined('password is required'),
+    categoryId: string()
+      .defined('categoryId is required')
+      .length(36, 'A valid categoryId has a string length of 36 characters'),
+    title: string().defined('title is required'),
+    content: string().defined('content is required'),
   }).defined(),
 };
 
 const update = {
   body: object({
-    name: string()
-      .defined('name is required')
-      .max(120, 'name must have maximum 120 characters'),
+    categoryId: string()
+      .defined('categoryId is required')
+      .length(36, 'A valid categoryId has a string length of 36 characters'),
+    title: string().defined('title is required'),
+    content: string().defined('content is required'),
   }).defined(),
 };
 
 const params = {
-  params: object({ userId: string().defined('userId is required') }),
+  params: object({ postId: string().defined('postId is required') }),
 };
 
-export const createUserSchema = object({
+export const createPostSchema = object({
   ...create,
 });
 
-export const updateUserSchema = object({
+export const updatePostSchema = object({
   ...update,
   ...params,
 });
 
-// export const deleteUserSchema = object({
-//   ...params,
-// });
+export const onlyParamsPostSchema = object({
+  ...params,
+});
 
-export type CreateUserInput = InferType<typeof createUserSchema>;
-export type UpdateUserInput = InferType<typeof updateUserSchema>;
-// export type DeleteUserInput = InferType<typeof deleteUserSchema>;
+export type CreatePostInput = InferType<typeof createPostSchema>;
+export type ReadPostInput = InferType<typeof onlyParamsPostSchema>;
+export type UpdatePostInput = InferType<typeof updatePostSchema>;
+export type DeletePostInput = InferType<typeof onlyParamsPostSchema>;

@@ -24,9 +24,10 @@ export async function createUserService(body: CreateUserInput['body']) {
   );
 
   const user = usersRepository.create({
-    ...body,
-    permission: UserPermission.NONE,
+    name: body.name,
+    email: body.email,
     password: hashedPassword,
+    permission: UserPermission.NONE,
   });
 
   await usersRepository.save(user);

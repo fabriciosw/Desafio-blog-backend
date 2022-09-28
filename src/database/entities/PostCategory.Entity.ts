@@ -4,7 +4,7 @@ import Base from './Base.Entity';
 import Post from './Post.Entity';
 
 @Entity('postCategories')
-export default class Category extends Base {
+export default class PostCategory extends Base {
   @Column({ length: 50 })
   public name: string;
 

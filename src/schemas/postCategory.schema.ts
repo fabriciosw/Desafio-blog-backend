@@ -77,11 +77,7 @@ const create = {
   body: object({
     name: string()
       .defined('name is required')
-      .max(120, 'name must have maximum 120 characters'),
-    email: string()
-      .defined('email is required')
-      .matches(/\S+@\S+\.\S+/, 'email format is invalid'),
-    password: string().defined('password is required'),
+      .max(50, 'name must have maximum 50 characters'),
   }).defined(),
 };
 
@@ -89,27 +85,35 @@ const update = {
   body: object({
     name: string()
       .defined('name is required')
-      .max(120, 'name must have maximum 120 characters'),
+      .max(50, 'name must have maximum 50 characters'),
   }).defined(),
 };
 
 const params = {
-  params: object({ userId: string().defined('userId is required') }),
+  params: object({
+    postCategoryId: string().defined('postCategoryId is required'),
+  }),
 };
 
-export const createUserSchema = object({
+export const createPostCategorySchema = object({
   ...create,
 });
 
-export const updateUserSchema = object({
+export const updatePostCategorySchema = object({
   ...update,
   ...params,
 });
 
-// export const deleteUserSchema = object({
-//   ...params,
-// });
+export const deletePostCategorySchema = object({
+  ...params,
+});
 
-export type CreateUserInput = InferType<typeof createUserSchema>;
-export type UpdateUserInput = InferType<typeof updateUserSchema>;
-// export type DeleteUserInput = InferType<typeof deleteUserSchema>;
+export type CreatePostCategoryInput = InferType<
+  typeof createPostCategorySchema
+>;
+export type UpdatePostCategoryInput = InferType<
+  typeof updatePostCategorySchema
+>;
+export type DeletePostCategoryInput = InferType<
+  typeof deletePostCategorySchema
+>;

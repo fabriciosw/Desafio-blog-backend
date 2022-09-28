@@ -12,7 +12,7 @@ import {
   // listUsersService,
 } from '../services/user.service';
 
-export async function createUser(
+export async function createUserHandler(
   request: Request<{}, {}, CreateUserInput['body']>,
   response: Response
 ) {

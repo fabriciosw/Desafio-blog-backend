@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {
-  createUser,
+  createUserHandler,
   // deleteUser,
   // editUser,
   // listUsers,
@@ -153,7 +153,7 @@ routes.route('/').post(
     // validateAdmin,
     validateResource(createUserSchema),
   ],
-  createUser
+  createUserHandler
 );
 // .get(validateUser, listUsers);
 
