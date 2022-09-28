@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import UserPermission from '../enums/UserPermission';
+import UserPermission from '../entities/enums/UserPermission';
 
 export class User1664388733460 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

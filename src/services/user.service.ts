@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
 import config from '../config/config';
-import UserPermission from '../database/enums/UserPermission';
+import UserPermission from '../database/entities/enums/UserPermission';
 import UserRepository from '../database/repositories/user.repository';
 import { CreateUserInput } from '../schemas/user.schema';
 import ApiError from '../utils/apiError.utils';
