@@ -1,4 +1,4 @@
-import jwt, { Secret, SignOptions } from 'jsonwebtoken';
+import jwt, { JwtPayload, Secret, SignOptions } from 'jsonwebtoken';
 import config from '../config/config';
 import logger from '../config/logger';
 
@@ -12,7 +12,7 @@ export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
 
 export function verifyJwt(token: string) {
   try {
-    const decoded = jwt.verify(token, config.jwtSecret as Secret);
+    const decoded = jwt.verify(token, config.jwtSecret as Secret) as JwtPayload;
     return {
       valid: true,
       expired: false,

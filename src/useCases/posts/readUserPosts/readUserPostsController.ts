@@ -3,10 +3,10 @@ import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
-import createPostUseCase from './createPostUseCase';
+import ReadAllPostsUseCase from './readUserPostsUseCase';
 
-export default class CreatePostController implements IController {
-  constructor(private useCase: createPostUseCase) {}
+export default class ReadAllPostsController implements IController {
+  constructor(private useCase: ReadAllPostsUseCase) {}
 
   public async handle(
     request: Request,
@@ -14,24 +14,15 @@ export default class CreatePostController implements IController {
     next: NextFunction
   ) {
     try {
-      const { body } = request;
-      const userId = response.locals.user.decoded.sub;
+      const posts = await this.useCase.execute(getCustomRepository);
 
-      const post = await this.useCase.execute(
-        getCustomRepository,
-        body,
-        userId
-      );
-
-      return response
-        .status(StatusCodes.CREATED)
-        .json({ message: 'Post created', post });
+      return response.status(StatusCodes.OK).json({ posts });
     } catch (error: any) {
       if (error instanceof ApiError) return next(error);
 
       throw new ApiError(
         StatusCodes.INTERNAL_SERVER_ERROR,
-        `CreatePostController: ${error.message}`
+        `ReadAllPostsController: ${error.message}`
       );
     }
   }

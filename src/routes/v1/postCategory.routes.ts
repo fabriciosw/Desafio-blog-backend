@@ -1,6 +1,5 @@
-import { Router } from 'express';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import requireUser from '../../middlewares/requireUser';
+import { NextFunction, Request, Response, Router } from 'express';
+import requireAdmin from '../../middlewares/requireAdmin';
 import validateResource from '../../middlewares/validateResource';
 import { createPostCategorySchema } from '../../schemas/postCategory.schema';
 import createPostCategoryHandler from '../../useCases/postCategories/createPostCategory';
@@ -35,8 +34,10 @@ const routes = Router();
 
 routes
   .route('/')
-  .post(validateResource(createPostCategorySchema), (req, res, next) =>
-    createPostCategoryHandler.handle(req, res, next)
+  .post(
+    [validateResource(createPostCategorySchema), requireAdmin],
+    (req: Request, res: Response, next: NextFunction) =>
+      createPostCategoryHandler.handle(req, res, next)
   )
   .get((req, res, next) => readAllPostCategories.handle(req, res, next));
 

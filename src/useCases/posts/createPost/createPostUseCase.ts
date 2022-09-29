@@ -28,7 +28,8 @@ export default class CreatePostUseCase {
 
   public async execute(
     getCustomRepository: GetCustomRepositoryType,
-    body: CreatePostInput['body']
+    body: CreatePostInput['body'],
+    userId: string
   ) {
     const postRepository = getCustomRepository(this.postRepository);
 
@@ -41,7 +42,7 @@ export default class CreatePostUseCase {
     await this.validateFields(postCategoryRepository, body.categoryId);
 
     const post = await postRepository.create({
-      authorId: 'ae0a9051-7edd-4c34-8595-193c368ca991',
+      authorId: userId,
       categoryId,
       content,
       title,
