@@ -2,13 +2,14 @@ import { StatusCodes } from 'http-status-codes';
 import { CreatePostCategoryInput } from '../../../schemas/postCategory.schema';
 import ApiError from '../../../utils/apiError.utils';
 import IUseCase from '../../IUseCase';
-import IPostCategoryRepository, {
+import {
+  IPostCategoryRepositoryClass,
   IPostCategoryRepositoryInterface,
-} from '../../../database/repositories/interfaces/PostCategoryRepository/IPostCategoryRepository';
-import GetCustomRepositoryType from '../../../typings/getCustomRepository';
+} from '../../../database/repositories/interfaces/PostCategoryRepository';
+import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
 
 export default class CreatePostCategoryUseCase implements IUseCase {
-  constructor(private postCategoryRepository: IPostCategoryRepository) {}
+  constructor(private postCategoryRepository: IPostCategoryRepositoryClass) {}
 
   private async validateFields(
     postCategoryRepository: IPostCategoryRepositoryInterface,

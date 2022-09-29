@@ -1,9 +1,9 @@
 import { ICreatePostCategory } from '.';
 import PostCategory from '../../../entities/PostCategory.Entity';
 
-export default interface IPostCategoryRepository {
+export interface IPostCategoryRepositoryClass {
   new (
-    ormRepository: IPostCategoryRepository
+    ormRepository: IPostCategoryRepositoryClass
   ): IPostCategoryRepositoryInterface;
 }
 

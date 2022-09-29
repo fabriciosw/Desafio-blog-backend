@@ -1,8 +1,8 @@
 import User from '../../../entities/User.Entity';
 import { ICreateUser } from '.';
 
-export default interface IUserRepository {
-  new (ormRepository: IUserRepository): IUserRepositoryInterface;
+export interface IUserRepositoryClass {
+  new (ormRepository: IUserRepositoryClass): IUserRepositoryInterface;
 }
 
 export interface IUserRepositoryInterface {

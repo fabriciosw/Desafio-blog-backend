@@ -1,8 +1,8 @@
-import GetCustomRepositoryType from '../typings/getCustomRepository';
+import GetCustomRepositoryType from '../typings/GetCustomRepositoryType';
 
 export default interface UseCase {
   execute(
     getCustomRepository: GetCustomRepositoryType,
     data: any
-  ): Promise<any> | any;
+  ): Promise<any>;
 }

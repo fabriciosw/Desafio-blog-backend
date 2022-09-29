@@ -1,9 +1,9 @@
 import IUseCase from '../../IUseCase';
-import IPostRepository from '../../../database/repositories/interfaces/PostRepository/IPostRepository';
-import GetCustomRepositoryType from '../../../typings/getCustomRepository';
+import { IPostRepositoryClass } from '../../../database/repositories/interfaces/PostRepository';
+import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
 
 export default class ReadAllPostsUseCase implements IUseCase {
-  constructor(private postRepository: IPostRepository) {}
+  constructor(private postRepository: IPostRepositoryClass) {}
 
   public async execute(getCustomRepository: GetCustomRepositoryType) {
     const postRepository = getCustomRepository(this.postRepository);

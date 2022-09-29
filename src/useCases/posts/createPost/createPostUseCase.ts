@@ -1,16 +1,17 @@
 import { StatusCodes } from 'http-status-codes';
 import { CreatePostInput } from '../../../schemas/post.schema';
-import IPostRepository from '../../../database/repositories/interfaces/PostRepository/IPostRepository';
-import IPostCategoryRepository, {
-  IPostCategoryRepositoryInterface,
-} from '../../../database/repositories/interfaces/PostCategoryRepository/IPostCategoryRepository';
 import ApiError from '../../../utils/apiError.utils';
-import GetCustomRepositoryType from '../../../typings/getCustomRepository';
+import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
+import { IPostRepositoryClass } from '../../../database/repositories/interfaces/PostRepository';
+import {
+  IPostCategoryRepositoryClass,
+  IPostCategoryRepositoryInterface,
+} from '../../../database/repositories/interfaces/PostCategoryRepository';
 
 export default class CreatePostUseCase {
   constructor(
-    private postRepository: IPostRepository,
-    private postCategoryRepository: IPostCategoryRepository
+    private postRepository: IPostRepositoryClass,
+    private postCategoryRepository: IPostCategoryRepositoryClass
   ) {}
 
   private async validateFields(

@@ -1,8 +1,8 @@
 import { ICreatePost } from '.';
 import Post from '../../../entities/Post.Entity';
 
-export default interface IPostRepository {
-  new (ormRepository: IPostRepository): IPostRepositoryInterface;
+export interface IPostRepositoryClass {
+  new (ormRepository: IPostRepositoryClass): IPostRepositoryInterface;
 }
 
 export interface IPostRepositoryInterface {

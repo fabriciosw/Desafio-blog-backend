@@ -5,13 +5,14 @@ import ApiError from '../../../utils/apiError.utils';
 import IUseCase from '../../IUseCase';
 import UserPermission from '../../../database/entities/enums/UserPermission';
 import config from '../../../config/config';
-import IUserRepository, {
+import {
   IUserRepositoryInterface,
+  IUserRepositoryClass,
 } from '../../../database/repositories/interfaces/UserRepository/IUserRepository';
-import GetCustomRepositoryType from '../../../typings/getCustomRepository';
+import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
 
 export default class CreateUserUseCase implements IUseCase {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(private userRepository: IUserRepositoryClass) {}
 
   private async validateFields(
     userRepository: IUserRepositoryInterface,

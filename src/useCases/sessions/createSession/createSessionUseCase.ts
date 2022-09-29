@@ -4,12 +4,12 @@ import { CreateSessionInput } from '../../../schemas/session.schema';
 import ApiError from '../../../utils/apiError.utils';
 import IUseCase from '../../IUseCase';
 import config from '../../../config/config';
-import IUserRepository from '../../../database/repositories/interfaces/UserRepository/IUserRepository';
-import GetCustomRepositoryType from '../../../typings/getCustomRepository';
+import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
 import { signJwt } from '../../../utils/jwt.utils';
+import { IUserRepositoryClass } from '../../../database/repositories/interfaces/UserRepository';
 
 export default class CreateSessionUseCase implements IUseCase {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(private userRepository: IUserRepositoryClass) {}
 
   public async execute(
     getCustomRepository: GetCustomRepositoryType,
