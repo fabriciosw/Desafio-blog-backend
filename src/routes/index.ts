@@ -2,6 +2,7 @@ import { Express, Request, Response } from 'express';
 // import productRoutes from './v1/product.routes';
 import userRoutes from './v1/user.routes';
 import postCategoryRoutes from './v1/postCategory.routes';
+import postRoutes from './v1/post.routes';
 
 function routes(app: Express) {
   /**
@@ -22,6 +23,7 @@ function routes(app: Express) {
   // app.use('/api/v1/products', productRoutes);
   app.use('/api/v1/users', userRoutes);
   app.use('/api/v1/postCategories', postCategoryRoutes);
+  app.use('/api/v1/post', postRoutes);
 }
 
 export default routes;

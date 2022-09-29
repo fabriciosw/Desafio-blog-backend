@@ -1,4 +1,9 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
 export class Post1664391918210 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -49,6 +54,22 @@ export class Post1664391918210 implements MigrationInterface {
       }),
       true
     );
+
+    const authorIdForeignKey = new TableForeignKey({
+      columnNames: ['authorId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'users',
+      onDelete: 'CASCADE',
+    });
+    await queryRunner.createForeignKey('posts', authorIdForeignKey);
+
+    const postCategoriesForeignKey = new TableForeignKey({
+      columnNames: ['categoryId'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'postCategories',
+      onDelete: 'CASCADE',
+    });
+    await queryRunner.createForeignKey('posts', postCategoriesForeignKey);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

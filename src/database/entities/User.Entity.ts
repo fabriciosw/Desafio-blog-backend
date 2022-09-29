@@ -22,6 +22,6 @@ export default class User extends Base {
   })
   public permission: UserPermission;
 
-  @OneToMany(() => Post, (post: Post) => post.authorId)
+  @OneToMany(() => Post, (post: Post) => post.author)
   posts: Post[];
 }

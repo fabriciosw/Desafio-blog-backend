@@ -36,7 +36,6 @@ export class User1664388733460 implements MigrationInterface {
             name: 'permission',
             type: 'enum',
             enum: Object.values(UserPermission),
-            default: UserPermission.NONE,
             isNullable: false,
           },
           {

@@ -7,6 +7,6 @@ export default class PostCategory extends Base {
   @Column({ length: 50 })
   public name: string;
 
-  @OneToMany(() => Post, (post: Post) => post.categoryId)
+  @OneToMany(() => Post, (post) => post.category)
   posts: Post[];
 }

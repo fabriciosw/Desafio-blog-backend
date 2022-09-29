@@ -38,6 +38,12 @@ export default class PostCategoryRepository
     return postCategories;
   }
 
+  async findById(id: string): Promise<PostCategory | undefined> {
+    const postCategory = await this.ormRepository.findOne({ where: { id } });
+
+    return postCategory;
+  }
+
   async findByName(name: string): Promise<PostCategory | undefined> {
     const postCategory = await this.ormRepository.findOne({ where: { name } });
 
