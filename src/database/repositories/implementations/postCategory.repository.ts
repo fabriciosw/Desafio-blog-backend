@@ -1,14 +1,7 @@
-import {
-  EntityRepository,
-  getRepository,
-  ObjectType,
-  Repository,
-} from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 import PostCategory from '../../entities/PostCategory.Entity';
 import { ICreatePostCategory } from '../interfaces/PostCategoryRepository';
-import IPostCategoryRepository, {
-  IPostCategoryRepositoryInterface,
-} from '../interfaces/PostCategoryRepository/IPostCategoryRepository';
+import { IPostCategoryRepositoryInterface } from '../interfaces/PostCategoryRepository/IPostCategoryRepository';
 
 @EntityRepository(PostCategory)
 export default class PostCategoryRepository
@@ -50,7 +43,3 @@ export default class PostCategoryRepository
     return postCategory;
   }
 }
-
-export type GetCustomPostCategoryRepository = (
-  repo: ObjectType<IPostCategoryRepository>
-) => IPostCategoryRepositoryInterface;

@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
-import { GetCustomPostCategoryRepository } from '../../../database/repositories/implementations/postCategory.repository';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import createPostCategoryUseCase from './createPostCategoryUseCase';
@@ -17,7 +16,7 @@ export default class CreatePostCategoryController implements IController {
     try {
       const { body } = request;
       const postCategory = await this.useCase.execute(
-        getCustomRepository as GetCustomPostCategoryRepository,
+        getCustomRepository,
         body
       );
 

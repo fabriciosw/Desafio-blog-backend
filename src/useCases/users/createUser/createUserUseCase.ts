@@ -8,7 +8,7 @@ import config from '../../../config/config';
 import IUserRepository, {
   IUserRepositoryInterface,
 } from '../../../database/repositories/interfaces/UserRepository/IUserRepository';
-import { GetCustomUserRepository } from '../../../database/repositories/implementations/user.repository';
+import GetCustomRepositoryType from '../../../typings/getCustomRepository';
 
 export default class CreateUserUseCase implements IUseCase {
   constructor(private userRepository: IUserRepository) {}
@@ -27,7 +27,7 @@ export default class CreateUserUseCase implements IUseCase {
   }
 
   public async execute(
-    getCustomRepository: GetCustomUserRepository,
+    getCustomRepository: GetCustomRepositoryType,
     body: CreateUserInput['body']
   ) {
     const userRepository = getCustomRepository(this.userRepository);

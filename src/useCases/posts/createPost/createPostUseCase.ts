@@ -1,12 +1,11 @@
 import { StatusCodes } from 'http-status-codes';
 import { CreatePostInput } from '../../../schemas/post.schema';
 import IPostRepository from '../../../database/repositories/interfaces/PostRepository/IPostRepository';
-import { GetCustomPostRepository } from '../../../database/repositories/implementations/post.repository';
 import IPostCategoryRepository, {
   IPostCategoryRepositoryInterface,
 } from '../../../database/repositories/interfaces/PostCategoryRepository/IPostCategoryRepository';
-import { GetCustomPostCategoryRepository } from '../../../database/repositories/implementations/postCategory.repository';
 import ApiError from '../../../utils/apiError.utils';
+import GetCustomRepositoryType from '../../../typings/getCustomRepository';
 
 export default class CreatePostUseCase {
   constructor(
@@ -28,13 +27,12 @@ export default class CreatePostUseCase {
   }
 
   public async execute(
-    getCustomPostRepository: GetCustomPostRepository,
-    getCustomPostCategoryRepository: GetCustomPostCategoryRepository,
+    getCustomRepository: GetCustomRepositoryType,
     body: CreatePostInput['body']
   ) {
-    const postRepository = getCustomPostRepository(this.postRepository);
+    const postRepository = getCustomRepository(this.postRepository);
 
-    const postCategoryRepository = getCustomPostCategoryRepository(
+    const postCategoryRepository = getCustomRepository(
       this.postCategoryRepository
     );
 

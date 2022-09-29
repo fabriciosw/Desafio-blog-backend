@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
-import { GetCustomUserRepository } from '../../../database/repositories/implementations/user.repository';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import CreateUserUseCase from './createUserUseCase';
@@ -16,10 +15,7 @@ export default class CreateUserController implements IController {
   ) {
     try {
       const { body } = request;
-      const user = await this.useCase.execute(
-        getCustomRepository as GetCustomUserRepository,
-        body
-      );
+      const user = await this.useCase.execute(getCustomRepository, body);
 
       return response
         .status(StatusCodes.CREATED)

@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
-import { GetCustomPostRepository } from '../../../database/repositories/implementations/post.repository';
-import { GetCustomPostCategoryRepository } from '../../../database/repositories/implementations/postCategory.repository';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import createPostUseCase from './createPostUseCase';
@@ -17,11 +15,7 @@ export default class CreatePostController implements IController {
   ) {
     try {
       const { body } = request;
-      const post = await this.useCase.execute(
-        getCustomRepository as GetCustomPostRepository,
-        getCustomRepository as GetCustomPostCategoryRepository,
-        body
-      );
+      const post = await this.useCase.execute(getCustomRepository, body);
 
       return response
         .status(StatusCodes.CREATED)

@@ -1,11 +1,11 @@
 import IUseCase from '../../IUseCase';
 import IPostCategoryRepository from '../../../database/repositories/interfaces/PostCategoryRepository/IPostCategoryRepository';
-import { GetCustomPostCategoryRepository } from '../../../database/repositories/implementations/postCategory.repository';
+import GetCustomRepositoryType from '../../../typings/getCustomRepository';
 
 export default class ReadAllPostCategoriesUseCase implements IUseCase {
   constructor(private postCategoryRepository: IPostCategoryRepository) {}
 
-  public async execute(getCustomRepository: GetCustomPostCategoryRepository) {
+  public async execute(getCustomRepository: GetCustomRepositoryType) {
     const postCategoryRepository = getCustomRepository(
       this.postCategoryRepository
     );

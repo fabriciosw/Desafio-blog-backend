@@ -5,7 +5,7 @@ import IUseCase from '../../IUseCase';
 import IPostCategoryRepository, {
   IPostCategoryRepositoryInterface,
 } from '../../../database/repositories/interfaces/PostCategoryRepository/IPostCategoryRepository';
-import { GetCustomPostCategoryRepository } from '../../../database/repositories/implementations/postCategory.repository';
+import GetCustomRepositoryType from '../../../typings/getCustomRepository';
 
 export default class CreatePostCategoryUseCase implements IUseCase {
   constructor(private postCategoryRepository: IPostCategoryRepository) {}
@@ -24,7 +24,7 @@ export default class CreatePostCategoryUseCase implements IUseCase {
   }
 
   public async execute(
-    getCustomRepository: GetCustomPostCategoryRepository,
+    getCustomRepository: GetCustomRepositoryType,
     body: CreatePostCategoryInput['body']
   ) {
     const postCategoryRepository = getCustomRepository(

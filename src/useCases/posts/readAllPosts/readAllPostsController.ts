@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { getCustomRepository } from 'typeorm';
-import { GetCustomPostRepository } from '../../../database/repositories/implementations/post.repository';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import ReadAllPostsUseCase from './readAllPostsUseCase';
@@ -15,9 +14,7 @@ export default class ReadAllPostsController implements IController {
     next: NextFunction
   ) {
     try {
-      const posts = await this.useCase.execute(
-        getCustomRepository as GetCustomPostRepository
-      );
+      const posts = await this.useCase.execute(getCustomRepository);
 
       return response.status(StatusCodes.OK).json({ posts });
     } catch (error: any) {

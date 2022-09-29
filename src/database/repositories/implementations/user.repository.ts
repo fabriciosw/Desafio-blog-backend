@@ -1,14 +1,7 @@
-import {
-  EntityRepository,
-  getRepository,
-  ObjectType,
-  Repository,
-} from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 import User from '../../entities/User.Entity';
 import { ICreateUser } from '../interfaces/UserRepository';
-import IUserRepository, {
-  IUserRepositoryInterface,
-} from '../interfaces/UserRepository/IUserRepository';
+import { IUserRepositoryInterface } from '../interfaces/UserRepository/IUserRepository';
 
 @EntityRepository(User)
 export default class UserRepository implements IUserRepositoryInterface {
@@ -50,7 +43,3 @@ export default class UserRepository implements IUserRepositoryInterface {
     return user;
   }
 }
-
-export type GetCustomUserRepository = (
-  repo: ObjectType<IUserRepository>
-) => IUserRepositoryInterface;

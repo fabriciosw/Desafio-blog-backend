@@ -1,15 +1,7 @@
-import {
-  EntityRepository,
-  getRepository,
-  ObjectType,
-  Repository,
-} from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 import Post from '../../entities/Post.Entity';
-
 import { ICreatePost } from '../interfaces/PostRepository';
-import IPostRepository, {
-  IPostRepositoryInterface,
-} from '../interfaces/PostRepository/IPostRepository';
+import { IPostRepositoryInterface } from '../interfaces/PostRepository/IPostRepository';
 
 @EntityRepository(Post)
 export default class PostRepository implements IPostRepositoryInterface {
@@ -67,7 +59,3 @@ export default class PostRepository implements IPostRepositoryInterface {
     return posts;
   }
 }
-
-export type GetCustomPostRepository = (
-  repo: ObjectType<IPostRepository>
-) => IPostRepositoryInterface;
