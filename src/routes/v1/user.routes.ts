@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import {
-  createUserHandler,
-  // deleteUser,
-  // editUser,
-  // listUsers,
-} from '../../controllers/user.controller';
+// import // createUserHandler,
+// deleteUser,
+// editUser,
+// listUsers,
+// '../../controllers/user.controller';
 // import validateAdmin from '../../middlewares/validateAdmin';
 // import validateUser from '../../middlewares/validateUser';
 import validateResource from '../../middlewares/validateResource';
@@ -13,6 +12,7 @@ import {
   // updateUserSchema,
   // deleteUserSchema,
 } from '../../schemas/user.schema';
+import createUserHandler from '../../useCases/users/createUser';
 
 const routes = Router();
 
@@ -148,13 +148,11 @@ const routes = Router();
  *               $ref: '#/components/error/InvalidJWT'
  */
 
-routes.route('/').post(
-  [
-    // validateAdmin,
-    validateResource(createUserSchema),
-  ],
-  createUserHandler
-);
+routes
+  .route('/')
+  .post(validateResource(createUserSchema), (req, res, next) =>
+    createUserHandler.handle(req, res, next)
+  );
 // .get(validateUser, listUsers);
 
 // routes

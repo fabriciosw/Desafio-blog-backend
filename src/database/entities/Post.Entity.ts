@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { Column, Entity, ManyToOne } from 'typeorm';
 import Category from './PostCategory.Entity';
 import User from './User.Entity';
@@ -12,15 +11,18 @@ export default class Post extends Base {
   @ManyToOne(() => User, (user) => user.posts)
   authorId: User;
 
+  // @JoinColumn({ name: 'authorId' }) author: User;
+
   // @Column()
   // public categoryId: string;
-
   @ManyToOne(() => Category, (category) => category.posts)
   categoryId: Category;
 
-  @Column()
-  public title: string;
+  // @JoinColumn({ name: 'categoryId' }) category: Category;
 
   @Column()
-  public content: string;
+  title: string;
+
+  @Column()
+  content: string;
 }

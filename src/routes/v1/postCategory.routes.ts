@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { createPostCategoryHandler } from '../../controllers/postCategory.controller';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import requireUser from '../../middlewares/requireUser';
 import validateResource from '../../middlewares/validateResource';
 import { createPostCategorySchema } from '../../schemas/postCategory.schema';
+import createPostCategoryHandler from '../../useCases/postCategories/createPostCategory';
 
 const routes = Router();
 
@@ -32,10 +32,10 @@ const routes = Router();
  *         description: Product not found
  */
 
-routes.route('/').post(
-  // [requireUser, validateResource(createProductSchema)],
-  [validateResource(createPostCategorySchema)],
-  createPostCategoryHandler
-);
+routes
+  .route('/')
+  .post(validateResource(createPostCategorySchema), (req, res, next) =>
+    createPostCategoryHandler.handle(req, res, next)
+  );
 
 export default routes;

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { Column, Entity, OneToMany } from 'typeorm';
 import UserPermission from './enums/UserPermission';
 import Base from './Base.Entity';
