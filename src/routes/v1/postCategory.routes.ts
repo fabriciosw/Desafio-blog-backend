@@ -4,6 +4,7 @@ import requireUser from '../../middlewares/requireUser';
 import validateResource from '../../middlewares/validateResource';
 import { createPostCategorySchema } from '../../schemas/postCategory.schema';
 import createPostCategoryHandler from '../../useCases/postCategories/createPostCategory';
+import readAllPostCategories from '../../useCases/postCategories/readAllPostCategories';
 
 const routes = Router();
 
@@ -36,6 +37,7 @@ routes
   .route('/')
   .post(validateResource(createPostCategorySchema), (req, res, next) =>
     createPostCategoryHandler.handle(req, res, next)
-  );
+  )
+  .get((req, res, next) => readAllPostCategories.handle(req, res, next));
 
 export default routes;

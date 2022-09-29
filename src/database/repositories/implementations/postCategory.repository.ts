@@ -20,12 +20,6 @@ export default class PostCategoryRepository
     this.ormRepository = getRepository(PostCategory);
   }
 
-  async findByName(name: string): Promise<PostCategory | undefined> {
-    const postCategory = await this.ormRepository.findOne({ where: { name } });
-
-    return postCategory;
-  }
-
   async create({ name }: ICreatePostCategory): Promise<PostCategory> {
     const postCategory = await this.ormRepository.create({ name });
 
@@ -36,6 +30,18 @@ export default class PostCategoryRepository
     const newPostCategory = await this.ormRepository.save(postCategory);
 
     return newPostCategory;
+  }
+
+  async readAll(): Promise<PostCategory[]> {
+    const postCategories = await this.ormRepository.find();
+
+    return postCategories;
+  }
+
+  async findByName(name: string): Promise<PostCategory | undefined> {
+    const postCategory = await this.ormRepository.findOne({ where: { name } });
+
+    return postCategory;
   }
 }
 
