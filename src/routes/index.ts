@@ -17,7 +17,9 @@ function routes(app: Express) {
    *         description: App is up and running
    */
   app.get('/api/healthcheck', (req: Request, res: Response) =>
-    res.sendStatus(200)
+    res.status(200).json({
+      message: 'Hello World',
+    })
   );
 
   app.use('/api/v1/users', userRoutes);
