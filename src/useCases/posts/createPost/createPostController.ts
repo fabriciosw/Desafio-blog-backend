@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { getCustomRepository } from 'typeorm';
+import { CreatePostInput } from '../../../schemas/post.schema';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import createPostUseCase from './createPostUseCase';
@@ -9,7 +9,7 @@ export default class CreatePostController implements IController {
   constructor(private useCase: createPostUseCase) {}
 
   public async handle(
-    request: Request,
+    request: Request<{}, {}, CreatePostInput['body']>,
     response: Response,
     next: NextFunction
   ) {
@@ -17,11 +17,7 @@ export default class CreatePostController implements IController {
       const { body } = request;
       const userId = response.locals.user.decoded.sub;
 
-      const post = await this.useCase.execute(
-        getCustomRepository,
-        body,
-        userId
-      );
+      const post = await this.useCase.execute(body, userId);
 
       return response
         .status(StatusCodes.CREATED)

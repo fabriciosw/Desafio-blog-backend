@@ -1,21 +1,17 @@
 import { StatusCodes } from 'http-status-codes';
 import { CreatePostInput } from '../../../schemas/post.schema';
 import ApiError from '../../../utils/apiError.utils';
-import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
-import { IPostRepositoryClass } from '../../../database/repositories/interfaces/PostRepository';
-import {
-  IPostCategoryRepositoryClass,
-  IPostCategoryRepositoryInterface,
-} from '../../../database/repositories/interfaces/PostCategoryRepository';
+import { IPostRepository } from '../../../database/repositories/interfaces/PostRepository';
+import { IPostCategoryRepository } from '../../../database/repositories/interfaces/PostCategoryRepository';
 
 export default class CreatePostUseCase {
   constructor(
-    private postRepository: IPostRepositoryClass,
-    private postCategoryRepository: IPostCategoryRepositoryClass
+    private postRepository: IPostRepository,
+    private postCategoryRepository: IPostCategoryRepository
   ) {}
 
   private async validateFields(
-    postCategoryRepository: IPostCategoryRepositoryInterface,
+    postCategoryRepository: IPostCategoryRepository,
     id: string
   ) {
     const category = await postCategoryRepository.findById(id);
@@ -27,29 +23,19 @@ export default class CreatePostUseCase {
       );
   }
 
-  public async execute(
-    getCustomRepository: GetCustomRepositoryType,
-    body: CreatePostInput['body'],
-    userId: string
-  ) {
-    const postRepository = getCustomRepository(this.postRepository);
-
-    const postCategoryRepository = getCustomRepository(
-      this.postCategoryRepository
-    );
-
+  public async execute(body: CreatePostInput['body'], userId: string) {
     const { categoryId, content, title } = body;
 
-    await this.validateFields(postCategoryRepository, body.categoryId);
+    await this.validateFields(this.postCategoryRepository, body.categoryId);
 
-    const post = await postRepository.create({
+    const post = await this.postRepository.create({
       authorId: userId,
       categoryId,
       content,
       title,
     });
 
-    await postRepository.save(post);
+    await this.postRepository.save(post);
 
     const DTO = {
       id: post.id,

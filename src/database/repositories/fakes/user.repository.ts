@@ -1,9 +1,9 @@
 import UserPermission from '../../entities/enums/UserPermission';
 import User from '../../entities/User.Entity';
 import { ICreateUser } from '../interfaces/UserRepository';
-import { IUserRepositoryInterface } from '../interfaces/UserRepository/IUserRepository';
+import { IUserRepository } from '../interfaces/UserRepository/IUserRepository';
 
-export default class UserRepositoryFake implements IUserRepositoryInterface {
+export default class UserRepositoryFake implements IUserRepository {
   private mockUsers: User[] = [
     {
       id: '0d98b398-2c58-4c87-ac76-df5e6874073b',

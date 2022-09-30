@@ -2,7 +2,9 @@ import PostRepository from '../../../database/repositories/implementations/post.
 import ReadAllPostsController from './readAllPostsController';
 import ReadAllPostsUseCase from './readAllPostsUseCase';
 
-const useCase = new ReadAllPostsUseCase(PostRepository);
+const postRepository = new PostRepository();
+
+const useCase = new ReadAllPostsUseCase(postRepository);
 
 const controller = new ReadAllPostsController(useCase);
 

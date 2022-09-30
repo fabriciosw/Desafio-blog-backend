@@ -1,3 +1,3 @@
-export interface ICreatePostCategory {
-  name: string;
-}
+import IPostCategory from '../../../../models/postCategory.model';
+
+export interface ICreatePostCategory extends Pick<IPostCategory, 'name'> {}

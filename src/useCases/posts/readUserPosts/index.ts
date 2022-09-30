@@ -1,9 +1,11 @@
 import PostRepository from '../../../database/repositories/implementations/post.repository';
-import ReadAllPostsController from './readUserPostsController';
-import ReadAllPostsUseCase from './readUserPostsUseCase';
+import ReadUserPostsController from './readUserPostsController';
+import ReadUserPostsUseCase from './readUserPostsUseCase';
 
-const useCase = new ReadAllPostsUseCase(PostRepository);
+const postRepository = new PostRepository();
 
-const controller = new ReadAllPostsController(useCase);
+const useCase = new ReadUserPostsUseCase(postRepository);
+
+const controller = new ReadUserPostsController(useCase);
 
 export default controller;

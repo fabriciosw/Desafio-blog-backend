@@ -3,7 +3,10 @@ import PostCategoryRepository from '../../../database/repositories/implementatio
 import CreatePostController from './createPostController';
 import CreatePostUseCase from './createPostUseCase';
 
-const useCase = new CreatePostUseCase(PostRepository, PostCategoryRepository);
+const postRepository = new PostRepository();
+const postCategoryRepository = new PostCategoryRepository();
+
+const useCase = new CreatePostUseCase(postRepository, postCategoryRepository);
 
 const controller = new CreatePostController(useCase);
 

@@ -1,44 +1,42 @@
-import { EntityRepository, getRepository, Repository } from 'typeorm';
+import { EntityRepository, getRepository } from 'typeorm';
 import PostCategory from '../../entities/PostCategory.Entity';
 import { ICreatePostCategory } from '../interfaces/PostCategoryRepository';
-import { IPostCategoryRepositoryInterface } from '../interfaces/PostCategoryRepository/IPostCategoryRepository';
+import { IPostCategoryRepository } from '../interfaces/PostCategoryRepository/IPostCategoryRepository';
 
 @EntityRepository(PostCategory)
-export default class PostCategoryRepository
-  implements IPostCategoryRepositoryInterface
-{
-  ormRepository: Repository<PostCategory>;
-
-  constructor() {
-    this.ormRepository = getRepository(PostCategory);
-  }
-
+export default class PostCategoryRepository implements IPostCategoryRepository {
   async create({ name }: ICreatePostCategory): Promise<PostCategory> {
-    const postCategory = await this.ormRepository.create({ name });
+    const postCategory = await getRepository(PostCategory).create({ name });
 
     return postCategory;
   }
 
   async save(postCategory: PostCategory): Promise<PostCategory> {
-    const newPostCategory = await this.ormRepository.save(postCategory);
+    const newPostCategory = await getRepository(PostCategory).save(
+      postCategory
+    );
 
     return newPostCategory;
   }
 
   async readAll(): Promise<PostCategory[]> {
-    const postCategories = await this.ormRepository.find();
+    const postCategories = await getRepository(PostCategory).find();
 
     return postCategories;
   }
 
   async findById(id: string): Promise<PostCategory | undefined> {
-    const postCategory = await this.ormRepository.findOne({ where: { id } });
+    const postCategory = await getRepository(PostCategory).findOne({
+      where: { id },
+    });
 
     return postCategory;
   }
 
   async findByName(name: string): Promise<PostCategory | undefined> {
-    const postCategory = await this.ormRepository.findOne({ where: { name } });
+    const postCategory = await getRepository(PostCategory).findOne({
+      where: { name },
+    });
 
     return postCategory;
   }

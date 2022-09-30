@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { getCustomRepository } from 'typeorm';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
-import ReadAllPostsUseCase from './readUserPostsUseCase';
+import ReadUserPostsUseCase from './readUserPostsUseCase';
 
-export default class ReadAllPostsController implements IController {
-  constructor(private useCase: ReadAllPostsUseCase) {}
+export default class ReadUserPostsController implements IController {
+  constructor(private useCase: ReadUserPostsUseCase) {}
 
   public async handle(
     request: Request,
@@ -14,7 +13,8 @@ export default class ReadAllPostsController implements IController {
     next: NextFunction
   ) {
     try {
-      const posts = await this.useCase.execute(getCustomRepository);
+      const userId = response.locals.user.decoded.sub;
+      const posts = await this.useCase.execute(userId);
 
       return response.status(StatusCodes.OK).json({ posts });
     } catch (error: any) {
@@ -22,7 +22,7 @@ export default class ReadAllPostsController implements IController {
 
       throw new ApiError(
         StatusCodes.INTERNAL_SERVER_ERROR,
-        `ReadAllPostsController: ${error.message}`
+        `ReadUserPostsController: ${error.message}`
       );
     }
   }

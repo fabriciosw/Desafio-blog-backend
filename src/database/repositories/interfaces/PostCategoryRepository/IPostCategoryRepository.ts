@@ -1,13 +1,7 @@
 import { ICreatePostCategory } from '.';
 import PostCategory from '../../../entities/PostCategory.Entity';
 
-export interface IPostCategoryRepositoryClass {
-  new (
-    ormRepository: IPostCategoryRepositoryClass
-  ): IPostCategoryRepositoryInterface;
-}
-
-export interface IPostCategoryRepositoryInterface {
+export interface IPostCategoryRepository {
   create(postCategory: ICreatePostCategory): Promise<PostCategory>;
   save(postCategory: PostCategory): Promise<PostCategory>;
   findById(id: string): Promise<PostCategory | undefined>;

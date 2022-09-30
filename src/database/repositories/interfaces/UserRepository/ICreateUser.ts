@@ -1,8 +1,4 @@
-import UserPermission from '../../../entities/enums/UserPermission';
+import IUser from '../../../../models/user.model';
 
-export interface ICreateUser {
-  name: string;
-  email: string;
-  password: string;
-  permission: UserPermission;
-}
+export interface ICreateUser
+  extends Pick<IUser, 'name' | 'email' | 'password' | 'permission'> {}

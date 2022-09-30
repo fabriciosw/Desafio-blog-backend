@@ -1,6 +1,6 @@
-export interface ICreatePost {
+import IPost from '../../../../models/post.model';
+
+export interface ICreatePost extends Pick<IPost, 'title' | 'content'> {
   authorId: string;
   categoryId: string;
-  title: string;
-  content: string;
 }

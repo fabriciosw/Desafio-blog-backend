@@ -1,23 +1,17 @@
-import { EntityRepository, getRepository, Repository } from 'typeorm';
+import { EntityRepository, getRepository } from 'typeorm';
 import Post from '../../entities/Post.Entity';
 import { ICreatePost } from '../interfaces/PostRepository';
-import { IPostRepositoryInterface } from '../interfaces/PostRepository/IPostRepository';
+import { IPostRepository } from '../interfaces/PostRepository/IPostRepository';
 
 @EntityRepository(Post)
-export default class PostRepository implements IPostRepositoryInterface {
-  ormRepository: Repository<Post>;
-
-  constructor() {
-    this.ormRepository = getRepository(Post);
-  }
-
+export default class PostRepository implements IPostRepository {
   async create({
     authorId,
     categoryId,
     content,
     title,
   }: ICreatePost): Promise<Post> {
-    const post = await this.ormRepository.create({
+    const post = await getRepository(Post).create({
       author: authorId,
       category: categoryId,
       content,
@@ -28,13 +22,13 @@ export default class PostRepository implements IPostRepositoryInterface {
   }
 
   async save(post: Post): Promise<Post> {
-    const newPost = await this.ormRepository.save(post);
+    const newPost = await getRepository(Post).save(post);
 
     return newPost;
   }
 
   async readAll(): Promise<Post[]> {
-    const posts = await this.ormRepository
+    const posts = await getRepository(Post)
       .createQueryBuilder('posts')
       .innerJoinAndSelect('posts.author', 'author')
       .innerJoinAndSelect('posts.category', 'category')
@@ -51,9 +45,9 @@ export default class PostRepository implements IPostRepositoryInterface {
     return posts;
   }
 
-  async findByAuthorId(authorId: string): Promise<Post[]> {
-    const posts = await this.ormRepository.find({
-      where: { authorId },
+  async findByAuthorId(author: string): Promise<Post[]> {
+    const posts = await getRepository(Post).find({
+      where: { author },
     });
 
     return posts;

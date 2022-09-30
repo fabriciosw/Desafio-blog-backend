@@ -4,22 +4,16 @@ import { CreateSessionInput } from '../../../schemas/session.schema';
 import ApiError from '../../../utils/apiError.utils';
 import IUseCase from '../../IUseCase';
 import config from '../../../config/config';
-import GetCustomRepositoryType from '../../../typings/GetCustomRepositoryType';
 import { signJwt } from '../../../utils/jwt.utils';
-import { IUserRepositoryClass } from '../../../database/repositories/interfaces/UserRepository';
+import { IUserRepository } from '../../../database/repositories/interfaces/UserRepository';
 
 export default class CreateSessionUseCase implements IUseCase {
-  constructor(private userRepository: IUserRepositoryClass) {}
+  constructor(private userRepository: IUserRepository) {}
 
-  public async execute(
-    getCustomRepository: GetCustomRepositoryType,
-    body: CreateSessionInput['body']
-  ) {
+  public async execute(body: CreateSessionInput['body']) {
     const { email, password } = body;
 
-    const usersRepository = getCustomRepository(this.userRepository);
-
-    const user = await usersRepository.findByEmail(email);
+    const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
       throw new ApiError(

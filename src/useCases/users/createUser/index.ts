@@ -2,7 +2,9 @@ import UserRepository from '../../../database/repositories/implementations/user.
 import CreateUserController from './createUserController';
 import CreateUserUseCase from './createUserUseCase';
 
-const useCase = new CreateUserUseCase(UserRepository);
+const userRepository = new UserRepository();
+
+const useCase = new CreateUserUseCase(userRepository);
 
 const controller = new CreateUserController(useCase);
 
