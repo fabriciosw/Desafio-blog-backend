@@ -39,7 +39,7 @@ export default class CreatePostUseCase {
 
     const DTO = {
       id: post.id,
-      created_at: post.created_at,
+      createdAt: post.createdAt,
     };
 
     return DTO;

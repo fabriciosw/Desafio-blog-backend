@@ -22,13 +22,13 @@ export class PostCategory1664390964616 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
             isNullable: false,
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
             isNullable: false,

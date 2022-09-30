@@ -61,7 +61,7 @@ const routes = Router();
  *              id: b0a67f4b-091a-452e-bf59-9e16f18cff5e
  *              name: Fabricio
  *              email: fabricio.seb1@gmail.com
- *              created_at: 2022-09-28T21:17:49.205Z
+ *              createdAt: 2022-09-28T21:17:49.205Z
  *       401:
  *         description: Invalid JWT Token
  *         content:

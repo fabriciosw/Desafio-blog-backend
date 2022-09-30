@@ -1,5 +1,5 @@
 {
-  "name": "desafio-blog",
+  "name": "blog",
   "version": "1.0.0",
   "description": "Blog com NodeJs API com Typescript",
   "projectPrefix": "blog",

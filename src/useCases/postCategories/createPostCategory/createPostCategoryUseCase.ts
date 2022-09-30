@@ -32,7 +32,7 @@ export default class CreatePostCategoryUseCase implements IUseCase {
     const DTO = {
       id: postCategory.id,
       name: postCategory.name,
-      created_at: postCategory.created_at,
+      createdAt: postCategory.createdAt,
     };
 
     return DTO;

@@ -11,8 +11,8 @@ export default class UserRepositoryFake implements IUserRepository {
       email: 'leandro@email.com',
       password: '$2b$10$4a3HaBpia1PPYN/D0yoBwe0faSYKdPBvEnmZmkLR.p1R9aZWOZ3sq',
       permission: UserPermission.ADMIN,
-      created_at: new Date('2022-09-28 17:53:22.930'),
-      updated_at: new Date('2022-09-28 17:53:22.930'),
+      createdAt: new Date('2022-09-28 17:53:22.930'),
+      updatedAt: new Date('2022-09-28 17:53:22.930'),
       posts: [],
     },
   ];
@@ -22,8 +22,8 @@ export default class UserRepositoryFake implements IUserRepository {
       ...user,
       posts: [],
       id: '0d98b398-2c58-4c87-ac76-df5e6874073a',
-      created_at: new Date(Date.now().valueOf()),
-      updated_at: new Date(Date.now().valueOf()),
+      createdAt: new Date(Date.now().valueOf()),
+      updatedAt: new Date(Date.now().valueOf()),
     };
 
     return newUser;

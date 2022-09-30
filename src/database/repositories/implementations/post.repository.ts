@@ -36,7 +36,7 @@ export default class PostRepository implements IPostRepository {
         'posts.id',
         'posts.title',
         'posts.content',
-        'posts.created_at',
+        'posts.createdAt',
         'author.name',
         'category.name',
       ])

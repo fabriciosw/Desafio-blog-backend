@@ -9,8 +9,8 @@ export default class Base {
   public id: string;
 
   @CreateDateColumn()
-  public created_at: Date;
+  public createdAt: Date;
 
   @UpdateDateColumn()
-  public updated_at: Date;
+  public updatedAt: Date;
 }
