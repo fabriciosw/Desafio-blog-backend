@@ -52,4 +52,23 @@ export default class PostRepository implements IPostRepository {
 
     return posts;
   }
+
+  async findById(id: string): Promise<Post | undefined> {
+    const post = await getRepository(Post)
+      .createQueryBuilder('posts')
+      .where({ id })
+      .innerJoinAndSelect('posts.author', 'author')
+      .innerJoinAndSelect('posts.category', 'category')
+      .select([
+        'posts.id',
+        'posts.title',
+        'posts.content',
+        'posts.createdAt',
+        'author.name',
+        'category.name',
+      ])
+      .getOne();
+
+    return post;
+  }
 }

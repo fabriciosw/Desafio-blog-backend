@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import logger from './config/logger';
 import database from './config/database';
 import swaggerDocs from './config/swagger';

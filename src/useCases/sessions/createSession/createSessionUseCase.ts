@@ -16,19 +16,13 @@ export default class CreateSessionUseCase implements IUseCase {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
-      throw new ApiError(
-        StatusCodes.UNAUTHORIZED,
-        'Incorrect email/password combination.'
-      );
+      throw new ApiError(StatusCodes.UNAUTHORIZED, 'INVALID_CREDENTIALS');
     }
 
     const passwordConfirmed = await compare(password, user.password);
 
     if (!passwordConfirmed) {
-      throw new ApiError(
-        StatusCodes.UNAUTHORIZED,
-        'Incorrect email/password combination.'
-      );
+      throw new ApiError(StatusCodes.UNAUTHORIZED, 'INVALID_CREDENTIALS');
     }
 
     const token = signJwt(

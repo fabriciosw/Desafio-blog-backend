@@ -16,7 +16,7 @@ export default class CreatePostCategoryUseCase implements IUseCase {
     if (category)
       throw new ApiError(
         StatusCodes.CONFLICT,
-        "There's already an category with that name"
+        'CATEGORY_NAME_ALREADY_REGISTERED'
       );
   }
 

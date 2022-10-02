@@ -17,10 +17,7 @@ export default class CreatePostUseCase {
     const category = await postCategoryRepository.findById(id);
 
     if (!category)
-      throw new ApiError(
-        StatusCodes.CONFLICT,
-        'categoryId sent does not exist'
-      );
+      throw new ApiError(StatusCodes.CONFLICT, 'CATEGORY_ID_DOES_NOT_EXIST');
   }
 
   public async execute(body: CreatePostInput['body'], userId: string) {

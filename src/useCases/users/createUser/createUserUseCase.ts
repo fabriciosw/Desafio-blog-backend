@@ -14,10 +14,7 @@ export default class CreateUserUseCase implements IUseCase {
     const userExists = await userRepository.findByEmail(email);
 
     if (userExists)
-      throw new ApiError(
-        StatusCodes.CONFLICT,
-        "There's already an user with that Email"
-      );
+      throw new ApiError(StatusCodes.CONFLICT, 'EMAIL_ALREADY_REGISTERED');
   }
 
   public async execute(body: CreateUserInput['body']) {

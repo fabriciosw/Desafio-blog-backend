@@ -6,11 +6,11 @@ const requireUser = (req: Request, res: Response, next: NextFunction) => {
   const { user } = res.locals;
 
   if (!user) {
-    throw new ApiError(StatusCodes.FORBIDDEN, 'Not logged in');
+    throw new ApiError(StatusCodes.FORBIDDEN, 'NOT_LOGGED');
   }
 
   if (user.isTokenExpired)
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'JWT Token expired');
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'JWT_EXPIRED');
 
   return next();
 };
