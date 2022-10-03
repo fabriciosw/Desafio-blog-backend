@@ -35,7 +35,6 @@ export default class PostRepository implements IPostRepository {
       .select([
         'posts.id',
         'posts.title',
-        'posts.content',
         'posts.createdAt',
         'author.name',
         'category.name',

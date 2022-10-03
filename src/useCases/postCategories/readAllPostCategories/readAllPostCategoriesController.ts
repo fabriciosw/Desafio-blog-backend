@@ -15,7 +15,7 @@ export default class ReadAllPostCategoryController implements IController {
     try {
       const postCategory = await this.useCase.execute();
 
-      return response.status(StatusCodes.OK).json({ postCategory });
+      return response.status(StatusCodes.OK).json(postCategory);
     } catch (error: any) {
       if (error instanceof ApiError) return next(error);
 
