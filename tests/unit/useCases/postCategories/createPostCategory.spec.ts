@@ -1,7 +1,7 @@
 import PostCategoryRepositoryFake from '../../../../src/database/repositories/fakes/postCategory.repository';
 import CreatePostCategoryUseCase from '../../../../src/useCases/postCategories/createPostCategory/createPostCategoryUseCase';
 
-describe('createPostCategoryUseCase', () => {
+describe('CreatePostCategoryUseCase', () => {
   const postCategoryRepositoryFake = new PostCategoryRepositoryFake();
   const sut = new CreatePostCategoryUseCase(postCategoryRepositoryFake);
 

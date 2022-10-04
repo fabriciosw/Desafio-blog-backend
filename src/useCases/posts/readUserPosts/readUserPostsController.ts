@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
+import IReadUserPostsRequestDTO from './IReadUserPostsRequestDTO';
 import ReadUserPostsUseCase from './readUserPostsUseCase';
 
 export default class ReadUserPostsController implements IController {
@@ -14,7 +15,12 @@ export default class ReadUserPostsController implements IController {
   ) {
     try {
       const userId = response.locals.user.decoded.sub;
-      const posts = await this.useCase.execute(userId);
+
+      const useCaseData: IReadUserPostsRequestDTO = {
+        userId,
+      };
+
+      const posts = await this.useCase.execute(useCaseData);
 
       return response.status(StatusCodes.OK).json(posts);
     } catch (error: any) {

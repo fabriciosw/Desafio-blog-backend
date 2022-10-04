@@ -4,6 +4,7 @@ import { CreatePostInput } from '../../../schemas/post.schema';
 import ApiError from '../../../utils/apiError.utils';
 import IController from '../../IController';
 import createPostUseCase from './createPostUseCase';
+import ICreatePostRequestDTO from './ICreatePostRequestDTO';
 
 export default class CreatePostController implements IController {
   constructor(private useCase: createPostUseCase) {}
@@ -17,7 +18,12 @@ export default class CreatePostController implements IController {
       const { body } = request;
       const userId = response.locals.user.decoded.sub;
 
-      const post = await this.useCase.execute(body, userId);
+      const useCaseData: ICreatePostRequestDTO = {
+        ...body,
+        userId,
+      };
+
+      const post = await this.useCase.execute(useCaseData);
 
       return response
         .status(StatusCodes.CREATED)

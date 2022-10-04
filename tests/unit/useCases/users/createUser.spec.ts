@@ -1,7 +1,7 @@
 import UserRepositoryFake from '../../../../src/database/repositories/fakes/user.repository';
 import CreateUserUseCase from '../../../../src/useCases/users/createUser/createUserUseCase';
 
-describe('createUserUseCase', () => {
+describe('CreateUserUseCase', () => {
   const userRepositoryFake = new UserRepositoryFake();
   const sut = new CreateUserUseCase(userRepositoryFake);
 

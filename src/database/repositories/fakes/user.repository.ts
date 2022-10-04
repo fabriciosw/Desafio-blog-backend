@@ -15,6 +15,16 @@ export default class UserRepositoryFake implements IUserRepository {
       updatedAt: new Date('2022-09-28 17:53:22.930'),
       posts: [],
     },
+    {
+      id: '0d98b398-2c58-4c87-ac76-d0986874073b',
+      name: 'Nicolas',
+      email: 'nicolass@email.com',
+      password: '$2b$10$4a3HaBpia1PPYN/D0yoBwe0faSYKdPBvEnmZmkLR.p1R9aZWOZ3sq',
+      permission: UserPermission.NONE,
+      createdAt: new Date('2022-09-28 17:53:22.930'),
+      updatedAt: new Date('2022-09-28 17:53:22.930'),
+      posts: [],
+    },
   ];
 
   async create(user: ICreateUser): Promise<User> {

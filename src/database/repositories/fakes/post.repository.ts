@@ -24,6 +24,24 @@ export default class PostRepositoryFake implements IPostRepository {
       createdAt: new Date('2022-09-28 17:53:22.930'),
       updatedAt: new Date('2022-09-28 17:53:22.930'),
     },
+    {
+      id: '668e8e4f-9ac2-4f77-abcc-3af9ff89dbc2',
+      author: '0d98b398-2c58-4c87-ac76-df5e6874073b',
+      category: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d',
+      content: 'Lorem Ipsum amet',
+      title: 'lorem',
+      createdAt: new Date('2022-09-28 17:53:22.930'),
+      updatedAt: new Date('2022-09-28 17:53:22.930'),
+    },
+    {
+      id: '668e8e4f-9ac2-4f77-abcc-3af9ff89dbc3',
+      author: '0d98b398-2c58-4c87-ac76-d0986874073b',
+      category: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d',
+      content: 'Bolo de banana - banana',
+      title: 'Bolo de banana',
+      createdAt: new Date('2022-09-28 17:53:22.930'),
+      updatedAt: new Date('2022-09-28 17:53:22.930'),
+    },
   ];
 
   async create(post: ICreate): Promise<Post> {

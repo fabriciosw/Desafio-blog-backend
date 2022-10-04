@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
-import { CreatePostInput } from '../../../schemas/post.schema';
 import ApiError from '../../../utils/apiError.utils';
 import { IPostRepository } from '../../../database/repositories/interfaces/PostRepository';
 import { IPostCategoryRepository } from '../../../database/repositories/interfaces/PostCategoryRepository';
+import ICreatePostRequestDTO from './ICreatePostRequestDTO';
 
 export default class CreatePostUseCase {
   constructor(
@@ -20,10 +20,10 @@ export default class CreatePostUseCase {
       throw new ApiError(StatusCodes.CONFLICT, 'CATEGORY_ID_DOES_NOT_EXIST');
   }
 
-  public async execute(body: CreatePostInput['body'], userId: string) {
-    const { categoryId, content, title } = body;
+  public async execute(data: ICreatePostRequestDTO) {
+    const { categoryId, content, title, userId } = data;
 
-    await this.validateFields(this.postCategoryRepository, body.categoryId);
+    await this.validateFields(this.postCategoryRepository, categoryId);
 
     const post = await this.postRepository.create({
       authorId: userId,
