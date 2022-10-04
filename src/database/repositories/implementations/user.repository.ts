@@ -1,7 +1,6 @@
 import { EntityRepository, getRepository } from 'typeorm';
 import User from '../../entities/User.Entity';
-import { ICreateUser } from '../interfaces/UserRepository';
-import { IUserRepository } from '../interfaces/UserRepository/IUserRepository';
+import { ICreateUser, IUserRepository } from '../interfaces/UserRepository';
 
 @EntityRepository(User)
 export default class UserRepository implements IUserRepository {

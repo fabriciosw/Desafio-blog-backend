@@ -13,7 +13,7 @@ describe('createUserUseCase', () => {
           name: 'Leandro',
           password: '123456',
         })
-      ).rejects.toThrow("There's already an user with that Email");
+      ).rejects.toThrow('EMAIL_ALREADY_REGISTERED');
     });
   });
 

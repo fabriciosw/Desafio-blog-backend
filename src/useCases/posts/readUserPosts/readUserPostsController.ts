@@ -16,7 +16,7 @@ export default class ReadUserPostsController implements IController {
       const userId = response.locals.user.decoded.sub;
       const posts = await this.useCase.execute(userId);
 
-      return response.status(StatusCodes.OK).json({ posts });
+      return response.status(StatusCodes.OK).json(posts);
     } catch (error: any) {
       if (error instanceof ApiError) return next(error);
 

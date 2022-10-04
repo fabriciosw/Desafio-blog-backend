@@ -4,7 +4,7 @@ import { ICreateUser } from '../interfaces/UserRepository';
 import { IUserRepository } from '../interfaces/UserRepository/IUserRepository';
 
 export default class UserRepositoryFake implements IUserRepository {
-  private mockUsers: User[] = [
+  mockUsers: User[] = [
     {
       id: '0d98b398-2c58-4c87-ac76-df5e6874073b',
       name: 'Leandro',

@@ -1,7 +1,9 @@
 import { EntityRepository, getRepository } from 'typeorm';
 import PostCategory from '../../entities/PostCategory.Entity';
-import { ICreatePostCategory } from '../interfaces/PostCategoryRepository';
-import { IPostCategoryRepository } from '../interfaces/PostCategoryRepository/IPostCategoryRepository';
+import {
+  ICreatePostCategory,
+  IPostCategoryRepository,
+} from '../interfaces/PostCategoryRepository';
 
 @EntityRepository(PostCategory)
 export default class PostCategoryRepository implements IPostCategoryRepository {
