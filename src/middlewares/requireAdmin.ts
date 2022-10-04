@@ -6,14 +6,14 @@ const requireAdmin = (req: Request, res: Response, next: NextFunction) => {
   const { user } = res.locals;
 
   if (!user) {
-    throw new ApiError(StatusCodes.FORBIDDEN, 'NOT_LOGGED');
+    throw new ApiError(StatusCodes.UNAUTHORIZED, 'NOT_LOGGED');
   }
 
   if (user.isTokenExpired)
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'JWT_EXPIRED');
+    throw new ApiError(StatusCodes.FORBIDDEN, 'JWT_EXPIRED');
 
   if (user.decoded.auth !== 'admin')
-    throw new ApiError(StatusCodes.UNAUTHORIZED, 'USER_IS_NOT_ADM');
+    throw new ApiError(StatusCodes.FORBIDDEN, 'USER_IS_NOT_ADM');
 
   return next();
 };

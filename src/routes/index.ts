@@ -25,7 +25,7 @@ function routes(app: Express) {
   app.use('/api/v1/users', userRoutes);
   app.use('/api/v1/postCategories', postCategoryRoutes);
   app.use('/api/v1/posts', postRoutes);
-  app.use('/api/v1/session', sessionRoutes);
+  app.use('/api/v1/sessions', sessionRoutes);
 }
 
 export default routes;

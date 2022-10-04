@@ -19,7 +19,7 @@ export default class CreateSessionController implements IController {
 
       return response
         .status(StatusCodes.CREATED)
-        .json({ message: 'Logged in', token });
+        .json({ message: 'LOGGED_IN', token });
     } catch (error: any) {
       if (error instanceof ApiError) return next(error);
 

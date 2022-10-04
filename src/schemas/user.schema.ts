@@ -4,14 +4,22 @@ import { object, string, InferType } from 'yup';
  * @openapi
  * components:
  *   error:
- *     InvalidJWT:
+ *     UNAUTHORIZED:
  *        properties:
  *            status:
  *              type: number
  *              example: 401
  *            message:
  *              type: string
- *              example: Invalid JWT Token. / JWT Token is missing.
+ *              example: NOT_LOGGED
+ *     FORBIDDEN:
+ *        properties:
+ *            status:
+ *              type: number
+ *              example: 403
+ *            message:
+ *              type: string
+ *              example: JWT_EXPIRED / USER_IS_NOT_ADM
  *     DuplicatedEmail:
  *        properties:
  *            status:
@@ -19,31 +27,8 @@ import { object, string, InferType } from 'yup';
  *              example: 409
  *            message:
  *              type: string
- *              example: There's already an user with that Email
+ *              example: EMAIL_ALREADY_REGISTERED
  *   schemas:
- *     getUsers:
- *        type: array
- *        items:
- *          type: object
- *          properties:
- *            id:
- *              type: number
- *              example: 0
- *            name:
- *              type: string
- *              example: "Fabricio"
- *            birthDate:
- *              type: string
- *              example: "2003-07-06T03:00:00.000Z"
- *            obs:
- *              type: string
- *              example: "Fullstack dev"
- *            cpf:
- *              type: string
- *              example: "111.111.111-11"
- *            permission:
- *              type: boolean
- *              example: true
  *     createUser:
  *       type: object
  *       required:
@@ -60,17 +45,6 @@ import { object, string, InferType } from 'yup';
  *         password:
  *           type: string
  *           example: "12345"
- *     editUser:
- *       type: object
- *       required:
- *        - permission
- *       properties:
- *         obs:
- *           type: string
- *           example: "Trainne"
- *         permission:
- *           type: boolean
- *           example: false
  */
 
 const create = {
