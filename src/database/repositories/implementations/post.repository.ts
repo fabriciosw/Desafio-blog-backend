@@ -17,8 +17,8 @@ export default class PostRepository implements IPostRepository {
     title,
   }: ICreate): Promise<Post> {
     const post = await getRepository(Post).create({
-      author: authorId,
-      category: categoryId,
+      author: { id: authorId },
+      category: { id: categoryId },
       content,
       title,
     });

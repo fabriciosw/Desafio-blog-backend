@@ -30,18 +30,6 @@ const routes = Router();
  *              name: Fabricio
  *              email: fabricio.seb1@gmail.com
  *              createdAt: 2022-09-28T21:17:49.205Z
- *       401:
- *         description: UNAUTHORIZED
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/error/UNAUTHORIZED'
- *       403:
- *         description: FORBIDDEN
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/error/FORBIDDEN'
  *       400:
  *         description: BAD REQUEST
  *         content:

@@ -4,73 +4,111 @@ import { object, string, InferType } from 'yup';
  * @openapi
  * components:
  *   error:
- *     InvalidJWT:
+ *     NonexistentCategoryId:
  *        properties:
  *            status:
  *              type: number
- *              example: 401
+ *              example: 404
  *            message:
  *              type: string
- *              example: Invalid JWT Token. / JWT Token is missing.
- *     DuplicatedEmail:
+ *              example: CATEGORY_ID_DOES_NOT_EXIST
+ *     NonexistentPostId:
  *        properties:
  *            status:
  *              type: number
- *              example: 409
+ *              example: 404
  *            message:
  *              type: string
- *              example: There's already an user with that Email
+ *              example: POST_ID_DOES_NOT_EXIST
  *   schemas:
- *     getUsers:
- *        type: array
- *        items:
+ *     createPost:
  *          type: object
  *          properties:
- *            id:
- *              type: number
- *              example: 0
- *            name:
+ *            title:
  *              type: string
- *              example: "Fabricio"
- *            birthDate:
+ *              example: Saiba mais sobre o clean code
+ *            categoryId:
  *              type: string
- *              example: "2003-07-06T03:00:00.000Z"
- *            obs:
+ *              example: 169d28a2-5e3d-407e-ac39-7541812c9f88
+ *            content:
  *              type: string
- *              example: "Fullstack dev"
- *            cpf:
- *              type: string
- *              example: "111.111.111-11"
- *            permission:
- *              type: boolean
- *              example: true
- *     createUser:
- *       type: object
- *       required:
- *        - name
- *        - email
- *        - password
- *       properties:
- *         name:
- *           type: string
- *           example: "Fabricio"
- *         email:
- *           type: string
- *           example: "fabricio.seb1@gmail.com"
- *         password:
- *           type: string
- *           example: "12345"
- *     editUser:
- *       type: object
- *       required:
- *        - permission
- *       properties:
- *         obs:
- *           type: string
- *           example: "Trainne"
- *         permission:
- *           type: boolean
- *           example: false
+ *              example: string
+ *     getAllPosts:
+ *      type: array
+ *      items:
+ *        type: object
+ *        properties:
+ *          id:
+ *            type: string
+ *            example: bbe6fa3f-b11b-4b89-87e6-bb54511b8890
+ *          title:
+ *            type: string
+ *            example: Saiba mais sobre o clean code
+ *          author:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: Fabricio
+ *          category:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: Entretenimento
+ *          createdAt:
+ *            type: string
+ *            example: 2022-09-30T16:07:11.218Z
+ *     getUserPosts:
+ *      type: array
+ *      items:
+ *        type: object
+ *        properties:
+ *          id:
+ *            type: string
+ *            example: bbe6fa3f-b11b-4b89-87e6-bb54511b8890
+ *          title:
+ *            type: string
+ *            example: Saiba mais sobre o clean code
+ *          content:
+ *            type: string
+ *            example: string
+ *          category:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: Entretenimento
+ *          createdAt:
+ *            type: string
+ *            example: 2022-09-30T16:07:11.218Z
+ *     getPostById:
+ *        type: object
+ *        properties:
+ *          id:
+ *            type: string
+ *            example: bbe6fa3f-b11b-4b89-87e6-bb54511b8890
+ *          title:
+ *            type: string
+ *            example: Saiba mais sobre o clean code
+ *          content:
+ *            type: string
+ *            example: string
+ *          category:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: Entretenimento
+ *          author:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *                example: Fabricio
+ *          createdAt:
+ *            type: string
+ *            example: 2022-09-30T16:07:11.218Z
  */
 
 const create = {

@@ -6,12 +6,12 @@ import Base from './Base.Entity';
 @Entity('posts')
 export default class Post extends Base {
   @ManyToOne(() => User, (user) => user.posts)
-  @JoinColumn()
-  author: string;
+  @JoinColumn({ name: 'authorId' })
+  author: User;
 
   @ManyToOne(() => Category, (category) => category.posts)
-  @JoinColumn()
-  category: string;
+  @JoinColumn({ name: 'categoryId' })
+  category: Category;
 
   @Column({ nullable: false })
   title: string;

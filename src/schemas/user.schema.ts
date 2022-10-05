@@ -19,6 +19,14 @@ import { object, string, InferType } from 'yup';
  *              example: 403
  *            message:
  *              type: string
+ *              example: JWT_EXPIRED
+ *     FORBIDDEN_ADM:
+ *        properties:
+ *            status:
+ *              type: number
+ *              example: 403
+ *            message:
+ *              type: string
  *              example: JWT_EXPIRED / USER_IS_NOT_ADM
  *     DuplicatedEmail:
  *        properties:

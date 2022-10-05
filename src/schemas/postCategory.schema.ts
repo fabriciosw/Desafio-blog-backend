@@ -4,73 +4,38 @@ import { object, string, InferType } from 'yup';
  * @openapi
  * components:
  *   error:
- *     InvalidJWT:
- *        properties:
- *            status:
- *              type: number
- *              example: 401
- *            message:
- *              type: string
- *              example: Invalid JWT Token. / JWT Token is missing.
- *     DuplicatedEmail:
+ *     DuplicatedPostCategoryName:
  *        properties:
  *            status:
  *              type: number
  *              example: 409
  *            message:
  *              type: string
- *              example: There's already an user with that Email
+ *              example: CATEGORY_NAME_ALREADY_REGISTERED
  *   schemas:
- *     getUsers:
- *        type: array
- *        items:
+ *     createPostCategory:
  *          type: object
  *          properties:
- *            id:
- *              type: number
- *              example: 0
  *            name:
  *              type: string
- *              example: "Fabricio"
- *            birthDate:
- *              type: string
- *              example: "2003-07-06T03:00:00.000Z"
- *            obs:
- *              type: string
- *              example: "Fullstack dev"
- *            cpf:
- *              type: string
- *              example: "111.111.111-11"
- *            permission:
- *              type: boolean
- *              example: true
- *     createUser:
- *       type: object
- *       required:
- *        - name
- *        - email
- *        - password
- *       properties:
- *         name:
- *           type: string
- *           example: "Fabricio"
- *         email:
- *           type: string
- *           example: "fabricio.seb1@gmail.com"
- *         password:
- *           type: string
- *           example: "12345"
- *     editUser:
- *       type: object
- *       required:
- *        - permission
- *       properties:
- *         obs:
- *           type: string
- *           example: "Trainne"
- *         permission:
- *           type: boolean
- *           example: false
+ *              example: Entretenimento
+ *     getAllPostCategories:
+ *      type: array
+ *      items:
+ *        type: object
+ *        properties:
+ *          id:
+ *            type: string
+ *            example: bbe6fa3f-b11b-4b89-87e6-bb54511b8890
+ *          name:
+ *            type: string
+ *            example: Fabricio
+ *          createdAt:
+ *            type: string
+ *            example: 2022-09-30T16:07:11.218Z
+ *          updatedAt:
+ *            type: string
+ *            example: 2022-09-30T16:07:11.218Z
  */
 
 const create = {

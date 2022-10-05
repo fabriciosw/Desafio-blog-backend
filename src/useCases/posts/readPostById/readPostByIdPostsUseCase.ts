@@ -10,7 +10,7 @@ export default class ReadPostByIdUseCase implements IUseCase {
     const post = await this.postRepository.findById(id);
 
     if (!post)
-      throw new ApiError(StatusCodes.BAD_REQUEST, 'POST_ID_DOES_NOT_EXIST');
+      throw new ApiError(StatusCodes.NOT_FOUND, 'POST_ID_DOES_NOT_EXIST');
 
     return post;
   }

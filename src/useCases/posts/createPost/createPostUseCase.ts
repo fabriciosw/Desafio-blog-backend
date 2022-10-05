@@ -17,7 +17,7 @@ export default class CreatePostUseCase {
     const category = await postCategoryRepository.findById(id);
 
     if (!category)
-      throw new ApiError(StatusCodes.CONFLICT, 'CATEGORY_ID_DOES_NOT_EXIST');
+      throw new ApiError(StatusCodes.NOT_FOUND, 'CATEGORY_ID_DOES_NOT_EXIST');
   }
 
   public async execute(data: ICreatePostRequestDTO) {
