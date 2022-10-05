@@ -9,15 +9,15 @@ describe('App', () => {
   });
 });
 
-describe('User', () => {
-  it('should be able to create an user', async () => {
-    const { status, body } = await supertest(app).post('/api/v1/users').send({
-      name: 'Red Wacky League Antlez',
-      email: 'red.Wacky@gmail.com',
-      password: '12345',
-    });
+// describe('User', () => {
+//   it('should be able to create an user', async () => {
+//     const { status, body } = await supertest(app).post('/api/v1/users').send({
+//       name: 'Red Wacky League Antlez',
+//       email: 'red.Wacky@gmail.com',
+//       password: '12345',
+//     });
 
-    expect(status).toBe(201);
-    expect(body).toBe('Hello World');
-  });
-});
+//     expect(status).toBe(201);
+//     expect(body).toBe('Hello World');
+//   });
+// });

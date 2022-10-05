@@ -14,11 +14,11 @@ export default class PostRepositoryFake implements IPostRepository {
 
   postCategoryRepositoryFake = new PostCategoryRepositoryFake();
 
-  mockPosts: Post[] = [
+  mockPosts = [
     {
       id: '668e8e4f-9ac2-4f77-abcc-3af9ff89dbc1',
-      author: '0d98b398-2c58-4c87-ac76-df5e6874073b',
-      category: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d',
+      author: { id: '0d98b398-2c58-4c87-ac76-df5e6874073b' },
+      category: { id: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d' },
       content: 'Lorem Ipsum amet',
       title: 'lorem',
       createdAt: new Date('2022-09-28 17:53:22.930'),
@@ -26,8 +26,8 @@ export default class PostRepositoryFake implements IPostRepository {
     },
     {
       id: '668e8e4f-9ac2-4f77-abcc-3af9ff89dbc2',
-      author: '0d98b398-2c58-4c87-ac76-df5e6874073b',
-      category: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d',
+      author: { id: '0d98b398-2c58-4c87-ac76-df5e6874073b' },
+      category: { id: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d' },
       content: 'Lorem Ipsum amet',
       title: 'lorem',
       createdAt: new Date('2022-09-28 17:53:22.930'),
@@ -35,8 +35,8 @@ export default class PostRepositoryFake implements IPostRepository {
     },
     {
       id: '668e8e4f-9ac2-4f77-abcc-3af9ff89dbc3',
-      author: '0d98b398-2c58-4c87-ac76-d0986874073b',
-      category: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d',
+      author: { id: '0d98b398-2c58-4c87-ac76-d0986874073b' },
+      category: { id: 'ca8ceb0b-3702-4b21-9ce3-48192677bd1d' },
       content: 'Bolo de banana - banana',
       title: 'Bolo de banana',
       createdAt: new Date('2022-09-28 17:53:22.930'),
@@ -47,14 +47,14 @@ export default class PostRepositoryFake implements IPostRepository {
   async create(post: ICreate): Promise<Post> {
     const newPost = {
       ...post,
-      author: post.authorId,
-      category: post.categoryId,
+      author: { id: post.authorId },
+      category: { id: post.categoryId },
       id: '0d98b398-2c58-4c87-ac76-df5e6874073a',
       createdAt: new Date(Date.now().valueOf()),
       updatedAt: new Date(Date.now().valueOf()),
     };
 
-    return newPost;
+    return newPost as unknown as Post;
   }
 
   async save(post: Post): Promise<Post> {
@@ -71,13 +71,13 @@ export default class PostRepositoryFake implements IPostRepository {
     const { author, category, createdAt, title, id, content } = post;
 
     const foundUser = this.userRepositoryFake.mockUsers.find(
-      (user) => user.id === author
+      (user) => user.id === author.id
     );
 
     if (!foundUser) throw new Error('Invalid fake relation');
 
     const foundCategory = this.postCategoryRepositoryFake.mockCategories.find(
-      (postCategory) => postCategory.id === category
+      (postCategory) => postCategory.id === category.id
     );
 
     if (!foundCategory) throw new Error('Invalid fake relation');
@@ -100,12 +100,12 @@ export default class PostRepositoryFake implements IPostRepository {
 
   async findByAuthorId(authorId: string): Promise<IFindByAuthorId> {
     const foundPosts = this.mockPosts.filter(
-      (post) => post.author === authorId
+      (post) => post.author.id === authorId
     );
 
     const joinedPosts = foundPosts.map((post) => {
       const foundCategory = this.postCategoryRepositoryFake.mockCategories.find(
-        (category) => category.id === post.category
+        (category) => category.id === post.category.id
       );
 
       if (!foundCategory) throw new Error('Invalid fake relation');
@@ -128,13 +128,13 @@ export default class PostRepositoryFake implements IPostRepository {
       const { author, category, createdAt, title, id } = post;
 
       const foundUser = this.userRepositoryFake.mockUsers.find(
-        (user) => user.id === author
+        (user) => user.id === author.id
       );
 
       if (!foundUser) throw new Error('Invalid fake relation');
 
       const foundCategory = this.postCategoryRepositoryFake.mockCategories.find(
-        (postCategory) => postCategory.id === category
+        (postCategory) => postCategory.id === category.id
       );
 
       if (!foundCategory) throw new Error('Invalid fake relation');
