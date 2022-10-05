@@ -9,7 +9,7 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Quickstart API Docs',
+      title: 'Blob blog API Docs',
       version,
     },
     consumes: ['application/json'],

@@ -50,10 +50,6 @@ export default class PostRepository implements IPostRepository {
   }
 
   async findByAuthorId(author: string): Promise<IFindByAuthorId> {
-    // const posts = await getRepository(Post).find({
-    //   where: { author },
-    // });
-
     const posts = await getRepository(Post)
       .createQueryBuilder('posts')
       .where({ author })

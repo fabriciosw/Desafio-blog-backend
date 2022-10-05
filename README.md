@@ -18,7 +18,7 @@ Mais informações: [site oficial](https://nodejs.org/en/).
 
 `$ yarn`
 
-Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis.
+Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis. (não esqueca de criar os bancos de teste e o principal)
 
 Digite no seu terminal `$ yarn typeorm:run` para executar as migrations da API.
 
