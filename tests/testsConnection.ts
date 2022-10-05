@@ -7,10 +7,10 @@ import UserPermission from '../src/database/entities/enums/UserPermission';
 const ormConfig: ConnectionOptions = {
   type: 'postgres',
   host: projectConfig.postgresDb.host,
-  port: projectConfig.postgresDb.port,
+  port: projectConfig.postgresDb.testsPort,
   username: projectConfig.postgresDb.username,
   password: projectConfig.postgresDb.password,
-  database: projectConfig.postgresDb.testsDatabase,
+  database: projectConfig.postgresDb.database,
   dropSchema: true,
   logging: false,
   synchronize: false,

@@ -28,10 +28,10 @@ const envVarsSchema = yup
     JWT_SECRET: yup.string().required('Secret is required'),
     POSTGRES_HOST: yup.string(), // .required('POSTGRES_HOST is required'),
     POSTGRES_PORT: yup.number().default(5432),
+    POSTGRES_TESTS_PORT: yup.number().default(5433),
     POSTGRES_USER: yup.string(), // .required('POSTGRES_USER is required'),
     POSTGRES_PASSWORD: yup.string(), // .required('POSTGRES_PASSWORD is required'),
     POSTGRES_DB: yup.string(), // .required('POSTGRES_DB is required'),
-    POSTGRES_TESTS_DB: yup.string(), // .required('POSTGRES_DB is required'),
   })
   .noUnknown();
 
@@ -51,10 +51,10 @@ const config = {
   postgresDb: {
     host: envVars.POSTGRES_HOST,
     port: envVars.POSTGRES_PORT,
+    testsPort: envVars.POSTGRES_TESTS_PORT,
     username: envVars.POSTGRES_USER,
     password: envVars.POSTGRES_PASSWORD,
     database: envVars.POSTGRES_DB,
-    testsDatabase: envVars.POSTGRES_TESTS_DB,
   },
   saltWorkFactor: envVars.SALT_WORK_FACTOR,
   accessTokenTtl: envVars.ACCESS_TOKEN_TTL,

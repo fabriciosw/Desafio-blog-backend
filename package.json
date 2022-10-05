@@ -9,6 +9,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
+    "postgres:up": "docker-compose -f docker.yml up",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
     "start": "npm run typeorm:deploy:run && node ./dist/src/index.js",

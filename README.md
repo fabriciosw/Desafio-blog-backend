@@ -18,7 +18,9 @@ Mais informações: [site oficial](https://nodejs.org/en/).
 
 `$ yarn`
 
-Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis. (não esqueca de criar os bancos de teste e o principal)
+Quando concluir a instalação das dependências, abra o projeto no seu editor, crie um arquivo `.env` com as mesmas informações do `.env.example` e peça as infomações com alguém da sua equipe para popular as variáveis. (Obs: testes funcionais precisam do docker rodando para acessar o banco de dados de teste)
+
+Digite no seu terminal `$ yarn postgres:up` para criar o container do Docker.
 
 Digite no seu terminal `$ yarn typeorm:run` para executar as migrations da API.
 
