@@ -23,7 +23,7 @@ Quando concluir a instalação das dependências, abra o projeto no seu editor, 
 Digite no seu terminal `$ yarn postgres:up` para criar o container do Docker.
 
 Digite no seu terminal `$ yarn typeorm:run` para executar as migrations da API.
-Se ocorrer algum erro dizendo que o database {nomeQueVoceColocouNaEnv} não existe, mude a porta POSTGRES_PORT da .env
+Se ocorrer algum erro dizendo que o database {nomeQueVoceColocouNaEnv} não existe, mude a porta POSTGRES_PORT da .env, delete o container do docker e crie-o novamente
 
 - O mesmo vale para o comando `$ yarn test`, mas com a variável POSTGRES_TESTS_PORT
 
